@@ -1,6 +1,7 @@
 ---
 plan: morning-digest
-status: ready
+status: done
+closed: 2026-11-02
 owner: rook
 opened: 2026-10-29
 ---
@@ -78,3 +79,24 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Preview URL
+
+[Digest preview](https://mega-s01e04-olszi37.soleolive1.chatgpt.site/digest.html)
+
+## Cleanup verification
+
+After reviewer confirmation, the same public URL was replaced with the clean export. Verified HTTP 200, the banner reads `no marker set`, and after removing the host's inline script the served page matches the local clean export.
+
+## Issue list
+
+| Issue | Work | Link |
+|---:|---|---|
+| #1 | Shared digest types | [1](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/1) |
+| #2 | Run log reader | [2](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/2) |
+| #3 | Digest HTML page | [3](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/3) |
+| #4 | Digest JSON endpoint | [4](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/4) |
+| #5 | Board digest links | [5](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/5) |
+| #6 | Digest route tests | [6](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/6) |
+| #7 | Public HTML preview for reviewer | [7](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/7) |
+| #8 | Remove preview marker and archive plan | [8](https://github.com/Olszi37/mega-s01e04-before-i-looked/issues/8) |
