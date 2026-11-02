@@ -68,7 +68,8 @@ self-contained, ADR 0001). Put it on your own public host, one where you can upl
 or static host, ADR 0003), so it opens from a public HTTPS link. Send the reviewer the link and the
 issues for this plan.
 
-Done when: the preview link is sent to the reviewer.
+Done when: the preview link and plan issues are sent, and the reviewer has reviewed the preview.
+Keep the review issue open until that review is in; submission alone does not finish it.
 
 ## 4. Clean up
 
