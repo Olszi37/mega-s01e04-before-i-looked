@@ -66,7 +66,7 @@ describe('digest routes', () => {
         },
         {
           job: 'zeta', owner: 'Zed', runs: 3, retries: 3, lastStatus: 'retry',
-          lastError: 'third retry', firstAt: '2026-10-29T09:05:00+02:00',
+          lastError: 'transient', firstAt: '2026-10-29T09:05:00+02:00',
           lastAt: '2026-10-29T09:15:00+02:00', hasFailure: false,
         },
       ],
@@ -79,10 +79,13 @@ describe('digest routes', () => {
       .map((row) => (row.match(/<td\b[^>]*>(.*?)<\/td>/s)?.[1] ?? '').replace(/<[^>]*>/g, '').trim())
       .filter((job) => job === 'alpha' || job === 'zeta');
     expect(displayedJobs).toEqual(['alpha', 'zeta']);
+    const alphaRow = rowMarkup.find((row) => row.includes('alpha')) ?? '';
+    const zetaRow = rowMarkup.find((row) => row.includes('zeta')) ?? '';
+    expect(alphaRow).toMatch(/class="warn"/);
+    expect(zetaRow).toMatch(/class="warn"/);
     expect(html).toContain('—');
     expect(html).toContain('first failure');
-    expect(html).toContain('3');
-    expect(html).toContain('warn');
+    expect(zetaRow).toContain('3');
   });
 
   it('returns 404 for a night with no file in both formats', async () => {
