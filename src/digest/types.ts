@@ -10,7 +10,7 @@ export type DigestRow = {
   /** Number of this job's events whose status is retry. */
   retries: number;
   lastStatus: DigestStatus;
-  /** Error on the last event, or null when that event has no error. */
+  /** Most recent error present, retained after recovery; null if none occurred. */
   lastError: string | null;
   /** Earliest/latest event by instant; retain the original timestamp and offset. */
   firstAt: string;
@@ -45,8 +45,10 @@ export type NightDigest = {
  *
  * Order events by timestamp instant, not file position or timestamp text. For
  * equal instants, original file order breaks ties (the later line wins for the
- * last event). firstAt/lastAt keep the original strings. owner, lastStatus and
- * lastError all describe the last event; a missing error becomes null.
+ * last event). firstAt/lastAt keep the original strings. owner and lastStatus
+ * describe the last event. lastError is the error from the chronologically last
+ * event containing an error, even if a later event recovers; null means no event
+ * contained an error. An explicitly present empty string still counts as an error.
  *
  * Consumers can import this type before the reader exists; implementations
  * export `const readNight: ReadNight = ...` from ./reader.ts.
